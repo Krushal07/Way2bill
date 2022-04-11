@@ -1,0 +1,32 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    @RenderBody()
+    @if (IsSectionDefined("cpValidation"))
+    {
+        @RenderSection("cpValidation",false)
+    }
+    else if (IsSectionDefined("suValidation"))
+    {
+        @RenderSection("suValidation",false)
+    }
+
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+﻿@model IEnumerable<Way2bill.Models.QuestionMaster>
+
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "~/Views/Shared/_Way2BillLayout.cshtml";
+}
+<style>
+    label.error.fail-alert {
+        /*border: 2px solid red;
+    border-radius: 4px;*/
+        line-height: 1;
+        /*padding: 5px;*/
+        /*background: #ffe6eb;*/
+        color: red;
+        /*/margin-left:150px;/
+    /margin-top:15px;/*/
+    }
+</style>
+<script type="text/javascript">
+	function focusonans()
+	{
+		var e = document.getElementById("Canswer");	
+		e.focus();
+		
+	}
+	
+</script>
+
+		<!-- Custom Theme files -->
+	<link href="~/Login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="~/Login/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- //Custom Theme files -->
+
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+	<!-- //web font -->
+
+@using(Html.BeginForm("Signup","Login",FormMethod.Post,new{id="suval"}))
+{
+<div class="w3layouts-main"> 
+	<div class="bg-layer">
+		<h1>Sign up</h1>
+		<div class="header-main">
+			<div class="main-icon">
+				<span class="fa fa-eercast"></span>
+			</div>
+			<div class="header-left-bottom">
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="text" placeholder="Company Name" id="Cname" name="Cname" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-book"></span>
+						<input type="text" placeholder="Company Address" id="Caddress" name="Caddress" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-phone"></span>
+						<input type="text" placeholder="Phone Number" id="Cphone" name="Cphone" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-bank"></span>
+						<input type="text" placeholder="City" id="Ccity" name="Ccity" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="email" placeholder="Email" id="Cemail" name="Cemail" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Password" id="Cpassword" name="Cpassword" required=""/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-comment"></span>
+						<select id="qList" name="qList" onchange="focusonans()" style="width:200px;">
+							<option value="" selected="selected">Select Question</option>
+							@foreach(var q in Model)
+							{
+								<option value=@q.Qid> @q.Questiontext </option>
+							}
+						</select>
+
+					</div>
+					<div class="icon1">
+						<span class="fa fa-comment"></span>
+						<input type="text" placeholder="Answer" id="Canswer" name="Canswer" required=""/>
+					</div>
+					
+					<div class="bottom">
+                            <input type="submit" class="btn btn-primary" value="Sign Up">
+                     </div>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>	
+}
+
+
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+@section suValidation
+{
+<script type="text/javascript">
+    //following is called jquery validation plugin
+    $(document).ready(function(){
+
+        $("#suval").validate({
+            errorClass: "error fail-alert",
+            rules: {
+                Cname: "required",
+
+                Caddress: {
+                    required: true
+                },
+                Cphone: {
+                    required: true,
+                    number: true
+                },
+                Ccity: {
+                    required: true
+                },
+               
+                Cemail: {
+                    required: true,
+                    email: true,
+                    remote: {
+                        url: '@Url.Action("CheckEmail","Login")',
+                        data: {
+                            'Cemail': function () {
+                                return $("#Cemail").val();
+                            }
+                        }
+                    }
+                },
+                Cpassword:{
+                    required:true
+                },
+                 Canswer: {
+                    required: true,
+                    
+                },
+            },
+            messages: {
+                Cname: {
+                    required: 'Please Enter Company Name',
+                    focus() { }
+                },
+                Caddress: {
+                    required: 'Please Enter Company Address',
+                    focus() { }
+                },
+                 Cphone: {
+                    required: 'Please Enter Phone',
+                    number: 'Please Enter Numeric value',
+                    focus() { }
+                },
+  
+                Ccity: {
+                    required: 'Please Enter City Of Company',
+                    focus() { }
+                },
+                Canswer: {
+                    required: 'Please Enter the answer',
+                    focus() { }
+                },
+               
+                Cemail: {
+                    required: 'Please Enter Email Address',
+                    email: 'please entern valid email address',
+                    remote:'Email Id Already Exist',
+                    focus() { }
+                },
+                Cpassword:{
+                    required: 'Please Enter Password',
+                    focus() { }
+                },
+            },
+            errorPlacement:function(error,element){
+                error.insertAfter(element.parent());
+
+            }
+        })
+
+    });
+</script>
+}

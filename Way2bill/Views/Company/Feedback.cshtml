@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Feedback";
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="~/home/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/home/css/fontawesome-all.min.css" rel="stylesheet">
+<link href="~/home/css/aos.min.css" rel="stylesheet">
+<link href="~/home/css/swiper.css" rel="stylesheet">
+<link href="~/home/css/style.css" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="~/home/assets/images/favicon.png">
+<!-- Scripts -->
+
+<script src="~/home/js/bootstrap.min.js"></script><!-- Bootstrap framework -->
+<script src="~/home/js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+<script src="~/home/js/swiper.min.js"></script><!-- Swiper for image and text sliders -->
+<script src="~/home/js/aos.js"></script><!-- AOS on Animation Scroll -->
+<script src="~/home/js/script.js"></script>  <!-- Custom scripts -->
+
+
+<style>
+    .form-container {
+        background-color: aliceblue;
+        box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 20px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<style>
+    /for jquery validation/
+    #feedback_form label.error {
+        width: 100%;
+        color: blue;
+        /font-style: italic;
+        / margin-left: 50px;
+        margin-bottom: 5px;
+    }
+
+    /for jquery validation/
+    #feedback_form input.error {
+        border: 3px solid red;
+    }
+
+    .btn {
+        color: black;
+        background-color: green;
+    }
+</style>
+
+<!-- Navigation -->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+    <div class="container">
+
+        <!-- Image Logo -->
+        <!-- <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> -->
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <a class="navbar-brand logo-text" href="@Url.Action("CompanyHome","Company",new {Companyid=@TempData["compId"]})">Way2Bill</a>
+
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+
+            <span class="nav-item social-icons ms-auto">
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                    </a>
+                </span>
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span>
+        </div> <!-- end of navbar-collapse -->
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->
+<br />
+<br />
+
+<div class="row " style="margin-top: 30px; /*margin-left:350px; margin-bottom:30px;*/">
+    <div class="col-md-12 col-md-offset-3 form-container">
+        <h2>Feedback</h2>
+        <p>
+            <b>Please provide your feedback below:</b>
+        </p>
+
+        @using (Html.BeginForm("", "", FormMethod.Post, new { id = "feedback_form" }))
+        {
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label>How do you rate your overall experience?</label>
+                    <p>
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radiobad" value="bad">
+                            Bad
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radioavg" value="average">
+                            Average
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radiogood" value="good" checked="checked">
+                            Good
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="comments">
+                        Comments:
+                    </label>
+                    <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Your Comments" maxlength="6000" rows="7" autofocus></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group" style="margin-left:1300px;">
+                    <button type="button" id="btnSubmit" class="btn btn-lg btn-primary">Submit</button>
+                </div>
+            </div>
+        }
+        <div id="success_message" style="width:100%; height:100%; display:none; ">
+            <h3>Posted your feedback successfully!</h3>
+        </div>
+        <div id="error_message"
+             style="width:100%; height:100%; display:none; ">
+            <h3>Error</h3>
+            Sorry there was an error sending your form.
+
+        </div>
+    </div>
+</div>
+
+
+@section feedbackUserValidation
+{
+<script type="text/javascript">
+
+    //$(window).bind("beforeunload", function () {
+    //    return confirm("Do you really want to close?");
+    //})
+    $(document).ready(function(){
+        //alert("inside");
+        $("#btnSubmit").click(function () {
+            var rdchk;
+            debugger;
+            if ($('#radiobad').prop('checked')) {
+                rdchk = "bad";
+                //alert(rdchk)
+            }
+            else if ($('#radioavg').prop('checked')) {
+                rdchk = "avg";
+                //alert(rdchk)
+            }
+            else  {
+                rdchk = "good";
+                //alert(rdchk)
+            }
+
+            //alert("button clicked");
+            if ($("#feedback_form").valid()) {
+                $.ajax({
+                    type: "post",
+                    datatype: "json",
+                    data: { comments: $('#comments').val(), rdchk},
+                    url: '@Url.Action("CompanyFeedback", "Company",new {Companyid=@TempData["compId"]})',
+
+                    success: function (res) {
+                        //debugger;
+                        if (res.toString() == "Success") {
+                            //alert("Feedback submited");
+                            window.location.href = '@Url.Action("Feedbackpost", "Company",new {Companyid=@TempData["compId"]})';
+                        }
+                        else {
+                            alert(res.toString());
+                        }
+                    },
+                    error: function (res) {
+                        alert('Error while processing');
+                    }
+                });
+            }
+        });
+
+
+       $("#feedback_form").validate({
+            // Rules for form validation
+            rules: {
+
+                comments: {
+                    required: true
+                }
+            },
+            // Messages for form validation
+            messages: {
+                comments: {
+                    required: 'Please enter your feedback'
+                },
+            },
+            // Do not change code below
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.parent());
+            }
+        });
+    });
+</script>
+}

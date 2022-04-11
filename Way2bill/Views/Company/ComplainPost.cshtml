@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "ComplainPost";
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="~/home/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/home/css/fontawesome-all.min.css" rel="stylesheet">
+<link href="~/home/css/aos.min.css" rel="stylesheet">
+<link href="~/home/css/swiper.css" rel="stylesheet">
+<link href="~/home/css/style.css" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="~/home/assets/images/favicon.png">
+<!-- Scripts -->
+<script src="~/home/js/bootstrap.min.js"></script><!-- Bootstrap framework -->
+<script src="~/home/js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+<script src="~/home/js/swiper.min.js"></script><!-- Swiper for image and text sliders -->
+<script src="~/home/js/aos.js"></script><!-- AOS on Animation Scroll -->
+<script src="~/home/js/script.js"></script>  <!-- Custom scripts -->
+<style>
+    .form-container {
+        background-color: aliceblue;
+        box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 20px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<!-- Navigation -->
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+    <div class="container">
+
+        <!-- Image Logo -->
+        <!-- <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> -->
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <a class="navbar-brand logo-text" href="@Url.Action("CompanyHome","Company",new {Companyid=@TempData["compId"]})">Way2Bill</a>
+
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+
+            <span class="nav-item social-icons ms-auto">
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x"></i>
+                    </a>
+                </span>
+                <span class="fa-stack">
+                    <a href="#your-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-twitter fa-stack-1x"></i>
+                    </a>
+                </span>
+            </span>
+        </div> <!-- end of navbar-collapse -->
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->
+<br />
+<br />
+<br />
+<div class="row " style="height:90vh;/* margin-left:350px; margin-bottom:30px;*/">
+    <div class="col-lg-12 col-md-offset-3 form-container">
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <label>
+                    We are sorry to hear, that you are having trouble while using our website. We will look into your complain and get back to you as soon as possible.
+                    Thank you so much for your patience.
+                </label>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

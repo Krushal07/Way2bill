@@ -1,0 +1,193 @@
+﻿@model IEnumerable<Way2bill.Models.CartMaster>
+@{
+    ViewData["Title"] = "BranchViewProductCart";
+    Layout = "~/Views/Shared/_BranchLayout.cshtml";
+    var productlist = (List<Way2bill.Models.ProductSubCategoryMaster>)ViewBag.productdetails;
+}
+
+<!-- Custom Theme files -->
+<link href="~/Login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="~/Login/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+
+
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
+<!-- //web font -->
+
+
+<script>
+    function showProduct()
+    {
+        document.getElementById("mydiv").style.display = 'block';
+    }
+    function hideProduct()
+    {
+        document.getElementById("mydiv").style.display = 'none';
+    }
+
+</script>
+
+
+
+    <div class="w3layouts-main">
+        <div class="bg-layer">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+            <link href="~/home/css/bootstrap.min.css" rel="stylesheet">
+            <link href="~/home/css/fontawesome-all.min.css" rel="stylesheet">
+            <link href="~/home/css/aos.min.css" rel="stylesheet">
+            <link href="~/home/css/swiper.css" rel="stylesheet">
+            <link href="~/home/css/style.css" rel="stylesheet">
+            <!-- Favicon -->
+        <link rel="icon" href="~/home/assets/images/favicon.png">
+            <!-- Scripts -->
+        <script src="~/home/js/bootstrap.min.js"></script><!-- Bootstrap framework -->
+        <script src="~/home/js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+        <script src="~/home/js/swiper.min.js"></script><!-- Swiper for image and text sliders -->
+        <script src="~/home/js/aos.js"></script><!-- AOS on Animation Scroll -->
+        <script src="~/home/js/script.js"></script>  <!-- Custom scripts -->
+        <style>
+                .btn {
+                    color: white;
+                    background-color: black;
+                }
+            </style>
+            <!-- Navigation -->
+
+       <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
+        <div class="container">
+
+            <!-- Image Logo -->
+            <!-- <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> -->
+
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <a class="navbar-brand logo-text" href="@Url.Action("BranchHome","Branch")">Way2Bill</a>
+
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" >
+               
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link active"  id="btnGenPDF" aria-current="page" href="@Url.Action("BranchHome","Branch")">Generate PDF</a>
+                    </li>
+               
+                </ul>
+             
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav>
+        <br>
+            <br>
+            <table id="details" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Product-id</th>
+                        <th>Product-name</th>
+                        <th>Price/unit</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                @{
+                    int price = 0;
+                    int total = 0;
+                    int gndtotal = 0;
+                    double Finaltotal = 0.0;
+
+                    @foreach (var cart in Model)
+                        {
+                                <tr>
+                                    <td>
+                                        @cart.Scid
+                                    </td>
+                                    <td>
+                                         @foreach (var sc in productlist)
+                                        {
+                                            @if (sc.Scid == cart.Scid)
+                                            {
+                                            @sc.Scname
+                                            price = sc.Scpriceperunit;
+                                            total = price * cart.ScQty;
+                                            
+                                             }   
+                                        }
+                                    </td>
+                                    <td>
+                                        @price
+                                    </td>
+                                  
+                                    <td>
+                                          @cart.ScQty
+                                    </td>
+                                    <td>
+                                        @total
+                                @{
+                                    gndtotal = gndtotal + total;
+                                }
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-dark" href="@Url.Action("BranchEditProduct","Branch",new {Cartid = cart.Cartid})">Edit</a> &nbsp;
+                                        <a type="button" class="btn btn-dark" href="@Url.Action("BranchDeleteProduct","Branch", new {Cartid = cart.Cartid,Customerid = cart.Customerid})" onclick="return confirm('Are you sure to delete?')">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                   }                   
+                </tbody>
+
+            </table>
+            <div>
+                 <span style="color:white;"> 
+                     GST = 18%
+                     Grand Total = @gndtotal
+                     Final Price =  @(Convert.ToDouble(gndtotal) + Convert.ToDouble(@gndtotal) * Convert.ToDouble(.18));
+            </span>
+            </div>
+            @using (Html.BeginForm("BranchViewProductCart", "Branch", FormMethod.Post))
+{
+            <input type="hidden" id="Customerid" name="Customerid" value=@TempData["Customerid"]>
+
+            <div class="header-main">
+                <div class="bottom" align="center">
+                    <input type="button" class="btn btn-primary" value="Add item" onclick="showProduct()"> &nbsp;&nbsp;
+                    <input type="button" class="btn btn-primary" value="Cancel" onclick="hideProduct()">
+                </div>
+                <br>
+                <br>
+
+                <div id="mydiv" style="display:none;">
+                    <div class="header-left-bottom">
+                        <div class="icon1">
+                            <span class="fa fa-phone"></span>
+                            <input type="text" placeholder="Productid" id="Scid" name="Scid" />
+                        </div>
+                        <div class="icon1">
+                            <span class="fa fa-user"></span>
+                            <input type="text" placeholder="Quantity" id="ScQty" name="ScQty" />
+                        </div>
+                        <div class="bottom">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+}
+
+        </div>
+    </div>
+<script type="text/javascript">
+            $(document).ready(function() {
+        $('#details').DataTable();
+    } );
+
+    $('#btnGenPDF').click(function () {
+        window.open('../Branch/PrintInvoice', '_blank');        
+    });
+</script>

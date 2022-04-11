@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_BranchLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       
+   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="~/home/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/home/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="~/home/css/aos.min.css" rel="stylesheet">
+    <link href="~/home/css/swiper.css" rel="stylesheet">
+    <link href="~/home/css/style.css" rel="stylesheet">
+    <!-- Favicon -->
+  <link rel="icon" href="~/home/assets/images/favicon.png">
+
+    <!-- Webpage Title -->
+    <title>Way2Bill</title>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
+        <div class="container">
+
+            <!-- Image Logo -->
+            <!-- <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> -->
+
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <a class="navbar-brand logo-text" href="@Url.Action("BranchHome","Branch")">Way2Bill</a>
+
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" >
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="@Url.Action("BranchHome","Branch")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("BranchCheckDetail","Branch")">Invoice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("BranchLogout","Branch")">Logout</a>
+                    </li>
+                    
+                </ul>
+                <span class="nav-item social-icons">
+                    <span class="fa-stack">
+                        <a href="#your-link">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-facebook-f fa-stack-1x"></i>
+                        </a>
+                    </span>
+                    <span class="fa-stack">
+                        <a href="#your-link">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-twitter fa-stack-1x"></i>
+                        </a>
+                    </span>
+                </span>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+    <section class="home py-5 d-flex align-items-center" id="header">
+        <div class="container text-light py-5" data-aos="fade-right">
+            <h1 class="headline">Best <span class="home_text">Invoice</span><br>Making Web App For You</h1>
+            <p class="para para-light py-3"> Now, it is extremely easy to manage a huge organization with help of the features we provide!  </p>
+            @* <div class="d-flex align-items-center">
+                <p class="p-2"><i class="fas fa-laptop-house fa-lg"></i></p>
+                <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="d-flex align-items-center">
+                <p class="p-2"><i class="fas fa-wifi fa-lg"></i></p>
+                <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="my-3">
+                <a class="btn" href="#plans">View Plans</a>
+                </div>*@
+        </div> <!-- end of container -->
+    </section> <!-- end of home -->
+ 
+
+
+
+       <!-- Services -->
+    <section class="services d-flex align-items-center py-5" id="services">
+        <div class="container text-light">
+            <div class="text-center pb-4">
+                <p>OUR SERVICES</p>
+                <h2 class="py-2">Explore unlimited possibilities</h2>
+            </div>
+            <div class="row gy-4 py-2" data-aos="zoom-in">
+               @* <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-home fa-2x"></i>
+                        <h4 class="py-2"></h4>
+                        <p class="para-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam odit consequatur doloribus natus in suscipit!</p>
+                    </div>
+                </div>*@
+                <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-archway fa-2x"></i>
+                        <h4 class="py-2"> Manage Branches</h4>
+                        <p class="para-light">Add your all branch and manage them easily with the help of this web app</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-cart-arrow-down fa-2x"></i>
+                        <h4 class="py-2">Products</h4>
+                        <p class="para-light">Add,Remove or Edit products with user-friendly User-interface</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-clipboard-list fa-2x"></i>
+                        <h4 class="py-2">Invoice</h4>
+                        <p class="para-light">Create invoice easily and convert them into pdf in just one click</p>
+                    </div>
+                </div>
+               @* <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-home fa-2x"></i>
+                        <h4 class="py-2">SECURITY</h4>
+                        <p class="para-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam odit consequatur doloribus natus in suscipit!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card bg-transparent">
+                        <i class="fas fa-tv fa-2x"></i>
+                        <h4 class="py-2">TV SETUP BOX</h4>
+                        <p class="para-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam odit consequatur doloribus natus in suscipit!</p>
+                    </div>
+                </div>*@
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section> <!-- end of services -->
+
+    <!-- Testimonials -->
+    <div class="slider-1 testimonial text-light d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="text-center w-lg-75 m-auto pb-4">
+                    <p>TESTIMONIALS</p>
+                    <h2 class="py-2">What Our Clients Says</h2>
+
+                </div>
+            </div> <!-- end of row -->
+            <div class="row p-2" data-aos="zoom-in">
+                <div class="col-lg-12">
+
+                    <!-- Card Slider -->
+                    <div class="slider-container">
+                        <div class="swiper-container card-slider">
+                            <div class="swiper-wrapper">
+
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card p-4">
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam commodi officia laborum qui iste quidem!</p>
+
+                                        <div class="d-flex pt-4">
+                                            <div>
+                                                <img class="avatar" src="~/home/assets/images/testimonial-1.jpg" alt="testimonial">
+                                            </div>
+                                            <div class="ms-3 pt-2">
+                                                <h6>Marlene Visconte</h6>
+                                                <p>General Manager - Scouter</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card p-4">
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam commodi officia laborum qui iste quidem!</p>
+                                        <div class="d-flex pt-4">
+                                            <div>
+                                                <img class="avatar" src="~/home/assets/images/testimonial-2.jpg" alt="testimonial">
+                                            </div>
+                                            <div class="ms-3 pt-2">
+                                                <h6>John Spiker</h6>
+                                                <p>Team Leader - Vanquish</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card p-4">
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam commodi officia laborum qui iste quidem!</p>
+                                        <div class="d-flex pt-4">
+                                            <div>
+                                                <img class="avatar" src="~/home/assets/images/testimonial-3.jpg" alt="testimonial">
+                                            </div>
+                                            <div class="ms-3 pt-2">
+                                                <h6>Stella Virtuoso</h6>
+                                                <p>Design Chief - Upscale</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-card p-4">
+                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam commodi officia laborum qui iste quidem!</p>
+                                        <div class="d-flex pt-4">
+                                            <div>
+                                                <img class="avatar" src="~/home/assets/images/testimonial-4.jpg" alt="testimonial">
+                                            </div>
+                                            <div class="ms-3 pt-2">
+                                                <p>Mike tim</p>
+                                                <p>Investor - TechGroww</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+
+                            </div> <!-- end of swiper-wrapper -->
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <!-- end of add arrows -->
+
+                        </div> <!-- end of swiper-container -->
+                    </div> <!-- end of slider-container -->
+                    <!-- end of card slider -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of testimonials -->
+
+
+
+    <!-- Location -->
+    <section class="location text-light py-5">
+        <div class="container" data-aos="zoom-in">
+            <div class="row">
+                <div class="col-lg-3 d-flex align-items-center">
+                    <div class="p-2"><i class="far fa-map fa-3x"></i></div>
+                    <div class="ms-2">
+                        <h6>ADDRESS</h6>
+                        <p>XYZ Road, Baroda</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-flex align-items-center">
+                    <div class="p-2"><i class="fas fa-mobile-alt fa-3x"></i></div>
+                    <div class="ms-2">
+                        <h6>CALL FOR QUERY</h6>
+                        <p>(800) 265  216 2020</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-flex align-items-center">
+                    <div class="p-2"><i class="far fa-envelope fa-3x"></i></div>
+                    <div class="ms-2">
+                        <h6>SEND US MESSAGE</h6>
+                        <p>way2bill@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-flex align-items-center">
+                    <div class="p-2"><i class="far fa-clock fa-3x"></i></div>
+                    <div class="ms-2">
+                        <h6>OPENING HOURS</h6>
+                        <p>09:00 AM - 18:00 PM</p>
+                    </div>
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section> <!-- end of location -->
+
+
+
+    <!-- Bottom -->
+    <div class="bottom py-2 text-light">
+        <div class="container d-flex justify-content-between">
+            <div>
+                <p>Copyright © Krushal Sadariya</p><br>
+            </div>
+            <div>
+                <i class="fab fa-cc-visa fa-lg p-1"></i>
+                <i class="fab fa-cc-mastercard fa-lg p-1"></i>
+                <i class="fab fa-cc-paypal fa-lg p-1"></i>
+                <i class="fab fa-cc-amazon-pay fa-lg p-1"></i>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of bottom -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="~/home/assets/images/up-arrow.png" alt="alternative">
+    </button>
+
+
+    
+            <!-- Scripts -->
+    <script src="~/home/js/bootstrap.min.js"></script><!-- Bootstrap framework -->
+    <script src="~/home/js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="~/home/js/swiper.min.js"></script><!-- Swiper for image and text sliders -->
+    <script src="~/home/js/aos.js"></script><!-- AOS on Animation Scroll -->
+    <script src="~/home/js/script.js"></script>  <!-- Custom scripts -->
+</body>
+</html>
+

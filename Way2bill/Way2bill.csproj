@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\home\.git\COMMIT_EDITMSG" />
+    <None Include="wwwroot\home\.git\config" />
+    <None Include="wwwroot\home\.git\description" />
+    <None Include="wwwroot\home\.git\FETCH_HEAD" />
+    <None Include="wwwroot\home\.git\HEAD" />
+    <None Include="wwwroot\home\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\home\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\home\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\home\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-merge-commit.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\home\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\home\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\home\.git\hooks\update.sample" />
+    <None Include="wwwroot\home\.git\index" />
+    <None Include="wwwroot\home\.git\info\exclude" />
+    <None Include="wwwroot\home\.git\logs\HEAD" />
+    <None Include="wwwroot\home\.git\logs\refs\heads\main" />
+    <None Include="wwwroot\home\.git\logs\refs\remotes\origin\main" />
+    <None Include="wwwroot\home\.git\objects\08\cb707636bb65245a4649db9aa911b1d56a38a0" />
+    <None Include="wwwroot\home\.git\objects\09\c2080fe4d49b3d242349547829d608074ed18e" />
+    <None Include="wwwroot\home\.git\objects\0e\a0b01db910cc5b8b682d5670ac88d1ccd277c0" />
+    <None Include="wwwroot\home\.git\objects\10\f6d65b0f850dadbbec880b9f01207643151ddf" />
+    <None Include="wwwroot\home\.git\objects\1c\b5e187c2dcf8059bafe692bb9d0c2c6c2f1319" />
+    <None Include="wwwroot\home\.git\objects\1e\437f7d6a67b4817fb96e7e9976960ef4971187" />
+    <None Include="wwwroot\home\.git\objects\21\2b31c744a885f7fd46ed736b8d85b24214fd42" />
+    <None Include="wwwroot\home\.git\objects\25\076590276f372948dbd97835795f3f1b112715" />
+    <None Include="wwwroot\home\.git\objects\2e\1a9be7148cc41ac5ac4cbd5a0ada07f820f2fa" />
+    <None Include="wwwroot\home\.git\objects\43\5a5ae7299bcdaaf1e56c409445cecc0dd9b9f8" />
+    <None Include="wwwroot\home\.git\objects\4d\c0d1c5488d2ec50552b160bf59623f57bd5ddb" />
+    <None Include="wwwroot\home\.git\objects\4e\48a46697302eb89d858229ec12ad23edd9b259" />
+    <None Include="wwwroot\home\.git\objects\53\358cbdc8c430c0dbcd6a516f98cf290bc0071c" />
+    <None Include="wwwroot\home\.git\objects\57\4a63fc70bf69a64199c426ae2c48098cb3da27" />
+    <None Include="wwwroot\home\.git\objects\5b\17915c4c3d8ca0d5957c4f326a70dd75775474" />
+    <None Include="wwwroot\home\.git\objects\5d\57f4411766079ca224fc4f6859224bed6ef6bf" />
+    <None Include="wwwroot\home\.git\objects\5d\cebd6a2a7127228bf4330ae18b78785942ec19" />
+    <None Include="wwwroot\home\.git\objects\64\fe9c0c12c7c047ef8eb7e60706480d40b341c7" />
+    <None Include="wwwroot\home\.git\objects\68\acb7a315ec9609f9fe5c46b3707cd8f8e1cbb0" />
+    <None Include="wwwroot\home\.git\objects\6f\9509c88bed7080d496fc5e1d87a9315e30549d" />
+    <None Include="wwwroot\home\.git\objects\73\c1a4d5d156b6ddc62a7e3eba1c206bd6ad19c8" />
+    <None Include="wwwroot\home\.git\objects\78\be1880edc2dba521305e14cb6a835c842717f2" />
+    <None Include="wwwroot\home\.git\objects\7f\02af3072f2659a40a86ac3a4fa35a715f8a767" />
+    <None Include="wwwroot\home\.git\objects\84\36b8926c0455639d8850e23e7c74f3a8dda95c" />
+    <None Include="wwwroot\home\.git\objects\88\3d18fad372d367eb321f1a6380ada025270118" />
+    <None Include="wwwroot\home\.git\objects\8b\e37b36786d16c6ad80dd7582991eeb663754a8" />
+    <None Include="wwwroot\home\.git\objects\8c\c35e9a3368e7b17aa2d682c8d1ba7faea86c12" />
+    <None Include="wwwroot\home\.git\objects\92\f36566538b9b185000a925dc28d3d26cdda10a" />
+    <None Include="wwwroot\home\.git\objects\99\2a1c06f16dbe8daa554b40e51080ae29c277a8" />
+    <None Include="wwwroot\home\.git\objects\9d\ba8c340bf81622be7b48a7a3546869bfb851d4" />
+    <None Include="wwwroot\home\.git\objects\9d\f490e8cfdd75704d31f518caf76ab34494b124" />
+    <None Include="wwwroot\home\.git\objects\a2\c9abe053415827b7f0ea883f6bc8001831de55" />
+    <None Include="wwwroot\home\.git\objects\a3\0179875fb0afb39bffa176ee6abcca0d65f433" />
+    <None Include="wwwroot\home\.git\objects\aa\707ae710ba252a7ce6007828f606c9e98baa37" />
+    <None Include="wwwroot\home\.git\objects\ad\1220594ffa940ab43cc41bc0b06588860bb33d" />
+    <None Include="wwwroot\home\.git\objects\af\159ea059e69af55a02839e97486936655abc06" />
+    <None Include="wwwroot\home\.git\objects\af\e315244f6dae3beda0159693d25a6e0466dd90" />
+    <None Include="wwwroot\home\.git\objects\b8\a8f656e1607a2c36884d3165872ef3515b5879" />
+    <None Include="wwwroot\home\.git\objects\bd\5102cd319dc62fe05304b7ae3f92d7a37c6f2c" />
+    <None Include="wwwroot\home\.git\objects\c3\5ec468f2e0649d6c599a38446afffccafce64c" />
+    <None Include="wwwroot\home\.git\objects\d0\1adbb74edba56abde5c747523f3eef0b4ea605" />
+    <None Include="wwwroot\home\.git\objects\d0\5ea581fbbf17eb0d3139f9937ac6a8fde98685" />
+    <None Include="wwwroot\home\.git\objects\d1\ac9ba1169e4076832034c5585e1c5bf9d6f83c" />
+    <None Include="wwwroot\home\.git\objects\d1\de2c73e6bec2f2229e70c205df4ae25df142f4" />
+    <None Include="wwwroot\home\.git\objects\d5\aa5b4dedde181f0bfc81f22c4fcff4de18401d" />
+    <None Include="wwwroot\home\.git\objects\d7\d59f7e80b8afccf3cf47a5ef4a9f1324800bee" />
+    <None Include="wwwroot\home\.git\objects\db\70e73e473f8ed16d596ab0fd373f3423fc8512" />
+    <None Include="wwwroot\home\.git\objects\dc\52d954d8d7f62c82cf63236d27093764a3d046" />
+    <None Include="wwwroot\home\.git\objects\dc\e459d0e5a832b08688e2331557535d60d8a171" />
+    <None Include="wwwroot\home\.git\objects\df\e0770424b2a19faf507a501ebfc23be8f54e7b" />
+    <None Include="wwwroot\home\.git\objects\e1\e1a6353c8ff0947fa96e03cf127306bc2169cd" />
+    <None Include="wwwroot\home\.git\objects\e1\e271c00e31d309e9bab411caeef86d6d6d0d57" />
+    <None Include="wwwroot\home\.git\objects\e5\dc1b316b890ab4276d592f0417574f679d7cba" />
+    <None Include="wwwroot\home\.git\objects\e7\ee418dc50bc7c1bcf81d780c89ab7a320777e3" />
+    <None Include="wwwroot\home\.git\objects\e9\f54b13d5e925602e04501415ced4bc0bc881d2" />
+    <None Include="wwwroot\home\.git\objects\f2\b124a2838a62a540af435a9cf1359109525285" />
+    <None Include="wwwroot\home\.git\objects\f3\3e8162997aaa9da582aa81428ee87aa48953a6" />
+    <None Include="wwwroot\home\.git\objects\fa\e180dacc52937c1d6a24636431663d6754fef5" />
+    <None Include="wwwroot\home\.git\objects\fc\567cd2f11d83683d9eb4ca1a5fdc912f7d417c" />
+    <None Include="wwwroot\home\.git\refs\heads\main" />
+    <None Include="wwwroot\home\.git\refs\remotes\origin\main" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\home\.git\objects\info\" />
+    <Folder Include="wwwroot\home\.git\objects\pack\" />
+    <Folder Include="wwwroot\home\.git\refs\tags\" />
+    <Folder Include="wwwroot\images\MainCategory\" />
+    <Folder Include="wwwroot\images\SubCategory\" />
+  </ItemGroup>
+
+</Project>
