@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Operations;
 using Microsoft.EntityFrameworkCore;
 using Way2bill.Models;
 using Way2bill.Report;
@@ -168,22 +169,35 @@ namespace Way2bill.Controllers
 
         public void AddInvoiceDetails(int invoiceNum, int customerid)
         {
-            InvoiceDetails invoicedetails = new InvoiceDetails();
+            //InvoiceDetails invoicedetails = new InvoiceDetails();
             CartMaster cm = new CartMaster();
             var scList = bkDb.CartMasters.Where(q => q.Customerid == customerid).ToList();
 
 
-            //transfering data from one table to another
+            ////transfering data from one table to another
+            //foreach (var sc in scList)
+            //{
+            //    invoicedetails.InvoiceNo = invoiceNum;
+            //    invoicedetails.Productid = sc.Scid;
+            //    invoicedetails.ProductQty = sc.ScQty.ToString();
+            //    bkDb.InvoiceDetailsMasters.Add(invoicedetails);
+            //    bkDb.SaveChanges();
+            //    bkDb.Entry(invoicedetails).State = EntityState.Detached;
+            //    invoicedetails.InvoiceDetailNo = 0;
+            //}
+
             foreach (var sc in scList)
             {
-                invoicedetails.InvoiceNo = invoiceNum;
-                invoicedetails.Productid = sc.Scid;
-                invoicedetails.ProductQty = sc.ScQty.ToString();
+                var invoicedetails = new InvoiceDetails
+                {
+                    InvoiceNo = invoiceNum,
+                    Productid = sc.Scid,
+                    ProductQty = sc.ScQty.ToString()
+                };
                 bkDb.InvoiceDetailsMasters.Add(invoicedetails);
                 bkDb.SaveChanges();
-                bkDb.Entry(invoicedetails).State = EntityState.Detached;
-                invoicedetails.InvoiceDetailNo = 0;
             }
+
 
         }
 
@@ -196,29 +210,48 @@ namespace Way2bill.Controllers
 
         public IActionResult PrintInvoice()
         {
-
             int branchid = Convert.ToInt32(HttpContext.Session.GetString("Branchid"));
             int customerid = Convert.ToInt32(HttpContext.Session.GetString("Customerid"));
+            if (branchid == 0 || customerid == 0)
+            {
+                throw new Exception("Session variables are not set correctly.");
+            }
 
             //getting grandtotal - starts
             var grandList = bkDb.CartMasters.Where(cm => cm.Customerid == customerid).ToList();
+            //if (grandList.Count == 0)
+            //{
+            //    throw new Exception("No cart items found for the given customer.");
+            //}
             var totalprice = 0;
+            //foreach (var grand in grandList)
+            //{
+            //    var screc = bkDb.ProductSubCategoryMasters.Where(sc => sc.Scid == grand.Scid).FirstOrDefault();
+            //    if (screc != null)
+            //    {
+            //        var total = Convert.ToInt32(grand.ScQty) * Convert.ToInt32(screc.Scpriceperunit);
+            //        totalprice = totalprice + total;
+            //    }
+            //}
             foreach (var grand in grandList)
             {
                 var screc = bkDb.ProductSubCategoryMasters.Where(sc => sc.Scid == grand.Scid).FirstOrDefault();
-                if (screc != null)
+                if (screc == null)
                 {
-                    var total = Convert.ToInt32(grand.ScQty) * Convert.ToInt32(screc.Scpriceperunit);
-                    totalprice = totalprice + total;
+                    throw new Exception($"Product with Scid {grand.Scid} not found.");
                 }
+
+                var total = Convert.ToInt32(grand.ScQty) * Convert.ToInt32(screc.Scpriceperunit);
+                totalprice += total;
             }
+
             var grandTotal = totalprice + totalprice * .18;
             //getting grandtotal - ends
 
-            BranchController bc = new BranchController(bkDb, henv);
+            //BranchController bc = new BranchController(bkDb, henv);
 
             //Adding record in invoicemaster table - starts            
-            bc.AddInvoiceMaster(branchid, customerid, grandTotal);
+            /*bc.*/AddInvoiceMaster(branchid, customerid, grandTotal);
             //Adding record in invoicemaster table - ends
 
             //getting latest invoice number
@@ -235,7 +268,7 @@ namespace Way2bill.Controllers
             }
 
             //Adding record in invoicedetails table - starts            
-            bc.AddInvoiceDetails(invoiceNum, customerid);
+            /*bc.*/AddInvoiceDetails(invoiceNum, customerid);
             //Adding record in invoicedetails table - ends
 
             InvoiceDetailsPDF invoiceDetailsPDF = new InvoiceDetailsPDF();
@@ -257,7 +290,7 @@ namespace Way2bill.Controllers
                 invoiceDetailsPDF.Gst = "18.0";
                 invoiceDetailsPDF.GrandTotal = maxInvoiceId.FinalTotal;
                 //Empting current cart from cartmaster-starts
-                bc.DeleteCurrentCart(customerid);
+                /*bc.*/DeleteCurrentCart(customerid);
                 //Empting current cart from cartmaster-ends
 
                 List<InvoiceDetails> invoiceDetails = new List<InvoiceDetails>();

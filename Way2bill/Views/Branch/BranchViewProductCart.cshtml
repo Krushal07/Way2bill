@@ -69,12 +69,17 @@
 
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" >
                
-                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+@*                 <ul class="navbar-nav ms-auto navbar-nav-scroll">
                     <li class="nav-item">
-                        <a class="nav-link active"  id="btnGenPDF" aria-current="page" href="@Url.Action("BranchHome","Branch")">Generate PDF</a>
+                            <a class="nav-link active" id="btnGenPDF" aria-current="page" href="@Url.Action("PrintInvoice","Branch")">Generate PDF</a>
                     </li>
                
-                </ul>
+                </ul> *@
+                    <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="btnGenPDF" aria-current="page" href="javascript:void(0);">Generate PDF</a>
+                        </li>
+                    </ul>
              
             </div> <!-- end of navbar-collapse -->
         </div> <!-- end of container -->
@@ -144,9 +149,9 @@
             </table>
             <div>
                  <span style="color:white;"> 
-                     GST = 18%
-                     Grand Total = @gndtotal
-                     Final Price =  @(Convert.ToDouble(gndtotal) + Convert.ToDouble(@gndtotal) * Convert.ToDouble(.18));
+                     GST = 18%    <br />
+                     Grand Total = @gndtotal <br />
+                     Final Price =  @(Convert.ToDouble(gndtotal) + Convert.ToDouble(@gndtotal) * Convert.ToDouble(.18))
             </span>
             </div>
             @using (Html.BeginForm("BranchViewProductCart", "Branch", FormMethod.Post))
@@ -182,12 +187,29 @@
 
         </div>
     </div>
-<script type="text/javascript">
+@* <script type="text/javascript">
             $(document).ready(function() {
         $('#details').DataTable();
     } );
 
     $('#btnGenPDF').click(function () {
         window.open('../Branch/PrintInvoice', '_blank');        
+    });
+</script> *@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#details').DataTable();
+    });
+
+    $('#btnGenPDF').click(function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        var $btn = $(this);
+        if (!$btn.data('clicked')) {
+            $btn.data('clicked', true); // Set a flag to prevent multiple clicks
+            window.open('@Url.Action("PrintInvoice", "Branch")', '_blank');
+            setTimeout(function () { // Reset the flag after a delay
+                $btn.data('clicked', false);
+            }, 2000); // Adjust delay as necessary
+        }
     });
 </script>
